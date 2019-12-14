@@ -1,0 +1,23 @@
+###安装JAVA环境
+#下载包    https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+#设置环境变量
+    JAVA_HOME       jdk
+    PATH            %JAVA_HOME%\bin
+#测试是否成功
+    cmd     javac
+
+	
+###安装eclipse中文版插件
+#help	=>	install new software
+#	https://download.eclipse.org/technology/babel/update-site/R0.17.0/2019-06/
+
+
+###eclipse快捷键
+#	https://baike.baidu.com/item/Eclipse/61703
+
+
+###关于Eclipse不自动弹出提示的解决办法
+#   https://www.jianshu.com/p/a4788ffc9221
+
+###IJ激活教程
+#   https://segmentfault.com/a/1190000020001847
