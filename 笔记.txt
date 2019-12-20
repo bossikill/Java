@@ -1,0 +1,15 @@
+#同一个类,同一个包,不同包的子类,不同包非子类
+private Y
+默认 Y,Y
+protected Y,Y,Y
+public Y,Y,Y,Y
+
+#equals比较的是内容
+#==比较的是两个引用是否指向同一个对象
+
+###格式化时间
+DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+df.format(date)
+
+###内部类的作用
+封装;提供命名空间;方便访问外部类成员
