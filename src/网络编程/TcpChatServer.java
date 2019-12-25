@@ -4,8 +4,8 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-//基于TCP Socket聊天工具
-public class ChatServer {
+//TCP聊天工具案例
+public class TcpChatServer {
     public static void main(String[] args) {
         System.out.println("服务器运行...");
         Thread t = new Thread(() -> {

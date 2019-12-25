@@ -7,7 +7,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class UploadServer {
+//TCP文件上传工具案例
+public class TcpUploadServer {
     public static void main(String[] args) {
         System.out.println("服务端运行...");
         try (

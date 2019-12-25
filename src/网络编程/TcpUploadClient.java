@@ -7,7 +7,8 @@ import java.io.IOException;
 import java.net.ConnectException;
 import java.net.Socket;
 
-public class UploadClient {
+//TCP文件上传工具案例
+public class TcpUploadClient {
     public static void main(String[] args) {
         System.out.println("客户端运行...");
 

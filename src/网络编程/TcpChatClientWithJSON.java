@@ -1,5 +1,7 @@
 package 网络编程;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -7,7 +9,8 @@ import java.io.InputStreamReader;
 import java.net.ConnectException;
 import java.net.Socket;
 
-public class ChatClient {
+//TCP聊天工具案例
+public class TcpChatClientWithJSON {
     public static void main(String[] args) {
         System.out.println("客户端运行...");
 
@@ -27,12 +30,18 @@ public class ChatClient {
                     if (keyboardInputString.equals("bye")) {
                         break;
                     }
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("message", keyboardInputString);
+                    jsonObject.put("userid", "javaee");
+                    jsonObject.put("username", "关东升");
+
                     //发送
-                    out.writeUTF(keyboardInputString);
+                    out.writeUTF(jsonObject.toString());
                     out.flush();
 
                     /*接收数据*/
                     String str = in.readUTF();
+                    jsonObject = new JSONObject(str);
                     System.out.printf("从服务器接收的数据:[%s] \n", str);
                 }
             } catch (ConnectException e) {

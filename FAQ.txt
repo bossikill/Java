@@ -21,3 +21,7 @@
 
 ###IJ激活教程
 #   https://segmentfault.com/a/1190000020001847
+
+###引入org.json包报错,找不到符号
+#   https://bbs.csdn.net/topics/392291176
+#   勾选IDEA的 enable annotation processing
