@@ -1,17 +1,13 @@
 package 网络编程;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-//使用HttpURLConnection发送GET请求
-public class index4 {
+//使用HttpURLConnection发送POST请求
+public class index5 {
     //Web服务网址
-    static String urlString = "http://www.51work6.com/service/mynotes/WebService.php?" +
-            "email=550476877@qq.com&type=JSON&action=query";
+    static String urlString = "http://www.51work6.com/service/mynotes/WebService.php";
 
     public static void main(String[] args) {
         BufferedReader br = null;
@@ -20,7 +16,14 @@ public class index4 {
         try {
             URL reqURL = new URL(urlString);
             conn = (HttpURLConnection) reqURL.openConnection();
-            conn.setRequestMethod("GET");
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+
+            String param = String.format("email=%s&type=%s&action=%s", "550476877@qq.com", "JSON", "query");
+            //设置参数
+            DataOutputStream dStream = new DataOutputStream(conn.getOutputStream());
+            dStream.writeBytes(param);
+            dStream.close();
 
             //打开网络通信输入流
             InputStream is = conn.getInputStream();
