@@ -1,3 +1,53 @@
+###ArrayBlockingQueue
+#   有界队列
+
+###虚假唤醒
+#   所有的wait,await都要放在while里面
+
+###LinkedBlockingQueue(阻塞链表队列)
+#   offer(提供),队列尾部插入元素,队列满则丢弃当前元素,返回false
+#   put(放),队列尾部插入元素,队列满则阻塞,直到成功
+#   poll(剪短),获取队列头部获取并移除一个元素,队列为空则返回null
+#   peek(偷看),获取队列头部元素不从队列移除它
+#   take,获取队列头部元素并移除它,队列为空则阻塞,直到队列不为空返回元素
+#   单向链表
+    头(出队),尾部(入队),独占锁,AQS阻塞队列
+    notEmpty(take,peek,poll),notFull(offer,put)
+
+###ConcurrentLinkedQueue
+#   底层使用单向链表数据结构保存队列元素,CAS算法,没有加锁,计算size不精确
+#   node节点,head,tail,q,p
+#   peek,poll/offer
+
+###StampedLock
+#   不可重入锁
+#   提供三种读写模式:
+    写锁writeLock
+    悲观读锁readLock
+    乐观读锁tryOptimisticRead
+
+###ReentrantReadWriteLock
+#   读写分离策略,允许多个线程可以同时获取读锁
+#   适合读多写少
+
+###ReentrantLock
+#   可重入独占锁
+#   公平锁&非公平锁(默认)
+
+###抽象同步队列AQS
+
+###jps，即可查看当前已启动的进程和对应的PID
+#   jstack pid 是java虚拟机自带的一种堆栈跟踪工具
+
+###LockSupport工具类
+#   主要作用是挂起和唤醒线程
+    唤醒需要许可证,默认线程不带许可证
+    park,unpark
+
+###CopyOnWriteArrayList
+#   使用写时复制的策略来保证list的一致性
+    使用了独占锁,提供弱一致性,迭代器获取的是一个快照
+
 ###longAccumulator
 #   LongAdder是longAccumulator的一个特例,后者提供更强大的功能,可以自定义累加规则
 
@@ -29,7 +79,7 @@
 
 ###公平锁
 #   最早请求锁的线程就最早获取到锁(ReentrantLock pairLock=new ReentrantLock(true))
-#非公平锁
+###非公平锁
 #   先来不一定先得(ReentrantLock pairLock=new ReentrantLock(false))
 #   在没有公平性需求的前提下尽量使用非公平锁,公平锁会带来性能开销
 
