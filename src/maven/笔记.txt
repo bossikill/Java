@@ -1,0 +1,6 @@
+###Maven环境安装,Maven教程第二章
+#   系统变量
+    M2_HOME E:\Program Files (x86)\apache-maven-3.6.3
+    M2  %M2_HOME%\bin
+    MAVEN_OPTS  -Xms256m -Xmx512m
+    Path    %M2%

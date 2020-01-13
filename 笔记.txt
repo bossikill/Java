@@ -1,3 +1,6 @@
+###Java基础知识整理
+#   https://github.com/Snailclimb/JavaGuide/blob/master/docs/java/Multithread/JavaConcurrencyBasicsCommonInterviewQuestionsSummary.md
+
 ###线程池使用完记得shutdown,否则JVM不会关闭
 
 ###创建线程和线程池时,要加上名字,方便日后定位错误
