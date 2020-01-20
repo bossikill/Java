@@ -1,6 +1,72 @@
-###Maven环境安装,Maven教程第二章
+###Maven环境安装,<<Maven实战>>第二章
 #   系统变量
     M2_HOME E:\Program Files (x86)\apache-maven-3.6.3
-    M2  %M2_HOME%\bin
-    MAVEN_OPTS  -Xms256m -Xmx512m
-    Path    %M2%
+    PATH    %M2_HOME%\bin
+    MAVEN_OPTS  -Xms128m -Xmx512m
+#   测试
+    mvn -v
+
+###常用命令
+#   mvn clean compile
+#   mvn clean test
+#   mvn clean package   #打包
+#   mvn clean install   #安装到本地.m2库
+#   mvn archetype:generate  #原型:生成
+#   mvn dependency:list #查看已解析依赖
+#   mvn dependency:tree #查看依赖树
+#   mvn dependency:analyze #分析诊断
+
+###java执行jar文件命令
+java -jar target\hello-world-1.0-SNAPSHOT.jar
+
+####坐标详解
+##必须
+#   groupId     实际项目    nexus.sonatype.org
+#   artifactId  实际项目中的一个Maven项目(模块) nexus-indexer
+#   version     版本
+##可选
+#   packaging   打包方式,jar(默认)
+##不能直接定义
+#   classifier  附属构件
+
+####依赖的配置
+#   groupId
+#   artifactId
+#   version
+#   type        依赖的类型,对应packaging,jar(默认)
+#   scope       依赖的范围(compile,test.provided,runtime,system)
+#   optional    标记依赖是否可选
+#   exclusions  排除传递性依赖
+
+####归类依赖
+#   把Maven的属性,当成一个变量用
+#   <properties><springframework.version>2.5.6</springframework.version></properties>
+#   ${springframework.version}
+
+####修改镜像仓库地址
+#   ~/.m2/settings.xml
+<mirror>
+    <id>alimaven</id>
+    <name>aliyun maven</name>
+    <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+    <mirrorOf>central</mirrorOf>
+</mirror>
+
+####排除传递依赖
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+    <exclusions>
+        <exclusion>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+
+####覆盖传递依赖
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.4.3</version>
+</dependency>

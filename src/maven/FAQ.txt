@@ -1,0 +1,7 @@
+###maven 不再支持源选项 1.5。请使用 1.6 或更高版本。
+#   在pom.xml添加代码
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>

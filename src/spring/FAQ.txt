@@ -1,0 +1,4 @@
+####IntelliJ IDEA下Cannot resolve symbol 'log'的解决方法
+#   https://blog.csdn.net/wangwang00001/article/details/80987510
+#   安装Lombok插件
+
