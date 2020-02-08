@@ -1,0 +1,7 @@
+#   docker search mysql
+#   docker pull mysql:latest
+#   docker images   //查看是否已安装了 mysql
+#   docker run -itd --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7.29   //运行mysql
+#   docker ps
+#   docker exec -it mysql bash
+#   mysql -h localhost -u root -p

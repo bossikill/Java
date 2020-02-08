@@ -1,3 +1,20 @@
+####Java效率工具之Lombok
+#   https://juejin.im/post/5b00517cf265da0ba0636d4b
+#   https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247485385&idx=2&sn=a7c3fb4485ffd8c019e5541e9b1580cd&chksm=cea24802f9d5c1144eee0da52cfc0cc5e8ee3590990de3bb642df4d4b2a8cd07f12dd54947b9&token=1381785723&lang=zh_CN#rd
+#   IDEA下载lombok插件
+    打开enable annotation processing
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+    </dependency>
+##常用功能
+#   @Getter/@Setter
+#   @ToString
+#   @NoArgsConstructor/@RequiredArgsConstructor/@AllArgsConstructor
+#   @Data       //注解在类上；提供类所有属性的 getting 和 setting 方法，此外还提供了equals、canEqual、hashCode、toString 方法
+#   @Builder    //建造者模式
+#   @Slf4j/@CommonsLog/@Log4j2
+
 ####IOC(控制反转)
 #   https://zh.wikipedia.org/wiki/%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC
 #   依赖注入,依赖查找

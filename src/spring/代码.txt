@@ -1,0 +1,88 @@
+####Bean实例化的三种方式
+#   <!--无参构造函数创建对象-->
+    <bean id="user" class="org.example.User"></bean>
+    <!--静态工厂创建对象-->
+    <bean id="userStatic" class="org.example.User" factory-method="say"></bean>
+    <!--实例工厂创建对象-->
+    <bean id="userInstance" class="org.example.User"></bean>
+    <bean id="userInstance2" factory-bean="userInstance" factory-method="doSth"></bean>
+#   ApplicationContext context =
+            new ClassPathXmlApplicationContext("applicationContext.xml");
+    User user = (User) context.getBean("user");
+    System.out.println(user);
+    user.add();
+
+####有参构造函数注入属性
+#   <bean id="test" class="org.example.User">
+        <constructor-arg name="username" value="foo"></constructor-arg>
+    </bean>
+
+####SET方法注入属性
+#   <bean id="test" class="org.example.User">
+        <property name="username" value="foo"></property>
+    </bean>
+
+####注入对象类型属性
+#   <bean id="userDao" class="org.example.UserDao"></bean>
+    <bean id="userService" class="org.example.UserServer">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+
+####p名称空间注入属性值
+#   <bean id="user" class="org.example.User" p:username="foo"></bean>
+
+####注入复杂数据类型
+#   <bean id="user" class="org.example.User">
+        <property name="array">
+            <list>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+            </list>
+        </property>
+        <property name="list">
+            <list>
+                <value>4</value>
+                <value>5</value>
+                <value>6</value>
+            </list>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="aa" value="1"></entry>
+                <entry key="bb" value="2"></entry>
+                <entry key="cc" value="3"></entry>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="driver">com.mysql.jdbc.Driver</prop>
+                <prop key="22">22</prop>
+                <prop key="33">33</prop>
+            </props>
+        </property>
+    </bean>
+
+####开启注解扫描(类,方法,属性)
+#   <context:component-scan base-package="org.example"></context:component-scan>
+
+####只扫描属性上的注解
+#   <context:annotation-config></context:annotation-config>
+
+####Thymeleaf
+#   <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+
+####mybatis
+#   <dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>1.3.2</version>
+    </dependency>
+#   <dependency>
+        <groupId>org.mybatis.generator</groupId>
+        <artifactId>mybatis-generator-core</artifactId>
+        <version>1.3.7</version>
+    </dependency>

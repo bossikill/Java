@@ -1,0 +1,6 @@
+####镜像加速
+#     "registry-mirrors": [
+        "https://yldwwkly.mirror.aliyuncs.com",
+        "https://reg-mirror.qiniu.com",
+        "https://registry.docker-cn.com"
+      ],

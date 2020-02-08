@@ -1,23 +1,150 @@
+####proxyTargetClass
+#   true    走cglib代理(用在main方法上)
+#   false   走JDK接口代理
+
+####springboot中使用redis缓存
+#   <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-cache</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
+#   spring.cache.type=redis
+    spring.cache.cache-names=coffee
+    spring.cache.redis.time-to-live=5000
+    spring.cache.redis.cache-null-values=false
+    spring.redis.host=localhost
+#   @EnableCaching(proxyTargetClass = true)     //打开注解
+
+####基于注解的缓存
+#   @EnableCaching      打开缓存
+#   @Cacheable          缓存存在,从缓存中取;如果不存在,则执行后放入缓存
+#   @CacheEvict         缓存清理
+#   @CachePut           设置缓存
+#   @Caching            同时指定多个Spring Cache相关的注解
+#   @CacheConfig        缓存设置
+
+####hibernate
+#   spring.jpa.hibernate.ddl-auto   create,create-drop,update,validate
+#   spring.jpa.properties.hibernate.show_sql=true
+#   spring.jpa.properties.hibernate.format_sql=true
+
+####常用JPA注解
+##实体
+#   @Entity             注明类是实体
+#   @MappedSuperclass   标记为实体父类
+#   @Table(name)        实体和对应的表关联
+##主键
+#   @Id                 主键
+#       @GeneratedValue
+#       @SequenceGenerator
+##映射
+#   @Column
+#   @JoinTable,@JoinColumn
+##关系
+#   @OneToOne,@OneToMany,@ManyToOne,@ManyToMany
+#   @OrderBy
+
+####Spring事务的传播性与隔离级别
+#   PROPAGATION_REQUIRED：默认事务类型，如果没有，就新建一个事务；如果有，就加入当前事务。适合绝大多数情况。
+#   PROPAGATION_REQUIRES_NEW：如果没有，就新建一个事务；如果有，就将当前事务挂起。
+    两个事务之间没有关联
+#   PROPAGATION_NESTED：如果没有，就新建一个事务；如果有，就在当前事务中嵌套其他事务。
+    两个事务之间有关联,外部事务回滚,内嵌事务也会回滚.
+#   PROPAGATION_SUPPORTS：如果没有，就以非事务方式执行；如果有，就使用当前事务。
+#   PROPAGATION_NOT_SUPPORTED：如果没有，就以非事务方式执行；如果有，就将当前事务挂起。即无论如何不支持事务。
+#   PROPAGATION_NEVER：如果没有，就以非事务方式执行；如果有，就抛出异常。
+#   PROPAGATION_MANDATORY：如果没有，就抛出异常；如果有，就使用当前事务。
+
+####常用注解
+##javaconfig相关注解
+#   @Configuration              当前类是一个配置类
+#   @ImportResource             注入配置信息
+#   @ComponentScan              告诉spring容器扫描哪些配置
+#   @Bean
+#   @ConfigurationProperties
+##定义相关注解
+#   @Component/@Repository/@Service
+#   @Controller/@RestController
+#   @RequestMapping
+##注入相关注解
+#   @Autowired/@Qualifier/@Resource
+#   @Value
+##其他
+#   @PathVariable       取url地址中的参数。
+#   @RequestParam       url的查询参数值。
+#   @RequestBody        可以将 HttpRequest body 中的 JSON 类型数据反序列化为合适的 Java 类型
+#   ResponseEntity      表示整个HTTP Response：状态码，标头和正文内容。我们可以使用它来自定义HTTP Response 的内容。
+#   @NoRepositoryBean   SpringDataJpa在启动时就不会去实例化
+#   @Transactional      开启事务
+
 ####POJO(Plain Ordinary Java Object,简单的Java对象)
 
 ####AOP(Aspect Oriented Programming,面向切面编程)
+#   OOP,通过继承的方式实现纵向抽取
+    AOP,将分散在各个业务逻辑代码中相同的代码通过横向切割的方式抽取到一个独立的模块中
+    spring的AOP本质是为类做了一个代理
+#   在Java中动态代理有两种方式：
+        JDK动态代理
+        CGLib动态代理
+#   AOP操作术语
+    连接点(JointPoint),类里面可以被增强的方法
+    切入点(PointCut),类中实际被增强的方法*****
+    增强/通知(Advice),增强的逻辑,成为增强,比如扩展日志功能,这个日志功能成为增强*****
+        五种Advice类型
+            前置:在方法之前执行
+            后置:在方法之后执行
+            最终:在后置之后执行
+            异常:方法出现异常
+            环绕:在方法之前和之后执行
+    切面(Aspect):把增强应用到具体方法上面,过程称为切面*****
+    引入/引介(Introduction):允许我们向现有的类添加新方法或属性。是一种特殊的增强！
+    目标对象(Target):代理的目标对象(要增强的类)
+    织入(Weaving):把增强应用到目标的过程,把Advice应用到Target的过程
+    代理(Proxy):一个类被AOP织入增强后,就产生一个结果代理类
 
 ####IOC(Inversion of Control,控制反转)
-#   DI(Dependency Injection,依赖注入)
-#       构造器注入
+#   把对象创建交给spring来完成,实现,dom4j解析xml,反射forName,newInstance
+
+####DI(Dependency Injection,依赖注入
+#   向类中的属性设置值
+#   构造器注入,SET注入,接口注入(spring不支持)
+#   DI和IOC的关系,依赖注入不能单独完成,需要在IOC的基础上完成操作
+
+####actuator
+#   /actuator/health   健康检查
+#   /actuator/beans    查看所有Bean
+#   /actuator/mapping  查看URL映射
+#   /actuator/env      查看环境信息
+#   <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+####过滤器和拦截器的区别
+#   过滤器（Filter）：当你有一堆东西的时候，你只希望选择符合你要求的某一些东西。定义这些要求的工具，就是过滤器。
+    拦截器（Interceptor）：在一个流程正在进行的时候，你希望干预它的进展，甚至终止它进行，这是拦截器做的事情。
+
+####spring安装
+#   https://www.w3cschool.cn/wkspring/f6pk1ic8.html
+
+####jdbctemplate操作的是sql,jpa操作的是对象。
+
+####JPA
+#   https://github.com/Snailclimb/springboot-guide/blob/master/docs/basis/springboot-jpa.md
+
+####springboot热更新
+#   https://github.com/Snailclimb/springboot-guide/blob/master/docs/basis/spring-boot-devtools.md
 
 ####安装spring boot cli
 #   下载  https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/
 #   添加到系统环境变量   E:\Program Files\spring-1.3.0.RELEASE\bin
 #   测试  spring --version
 
-####actuator
-#   http://localhost:8080/actuator/health   健康检查
-#   http://localhost:8080/actuator/beans
-#
-<dependency>
-  <groupId>org.springframework.boot</groupId>
-  <artifactId>spring-boot-starter-actuator</artifactId>
-</dependency>
-
-
+####异常处理
+@ControllerAdvice   成为了全局异常处理类
+    assignableTypes 让异常处理类只处理特定类抛出的异常
+@ExceptionHandler(value = Exception.class)  拦截所有异常
+ResponseStatusException 异常类

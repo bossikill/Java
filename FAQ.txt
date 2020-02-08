@@ -6,25 +6,18 @@
 #测试是否成功
     cmd     javac
 
-	
-###安装eclipse中文版插件
-#help	=>	install new software
-#	https://download.eclipse.org/technology/babel/update-site/R0.17.0/2019-06/
-
-
-###eclipse快捷键
-#	https://baike.baidu.com/item/Eclipse/61703
-
-
-###关于Eclipse不自动弹出提示的解决办法
-#   https://www.jianshu.com/p/a4788ffc9221
-
-###IJ激活教程
-#   https://segmentfault.com/a/1190000020001847
-
 ###引入org.json包报错,找不到符号
 #   https://bbs.csdn.net/topics/392291176
 #   勾选IDEA的 enable annotation processing
 
 ###下载JDBC
 #   https://dev.mysql.com/downloads/connector/j/5.1.html
+
+####IDEA
+#   IJ激活教程
+    https://segmentfault.com/a/1190000020001847
+#   实用功能Auto Import：自动优化导包（自动删除、导入包）
+    https://blog.csdn.net/weixin_37539378/article/details/80537011
+
+####intellij idea Entity类报错“Cannot resolve table”
+#   https://blog.csdn.net/u014290233/article/details/54311954

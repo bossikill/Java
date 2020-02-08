@@ -1,0 +1,14 @@
+####
+use springbucks;
+####创建用户
+db.createUser({
+    user: "springbucks",
+    pwd: "springbucks",
+    roles: [{
+        role: "readWrite",
+        db: "springbucks"
+    }]
+})
+
+####
+show users;
